@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/online_food_bd
+    username: root
+    password: sunethramc123
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8080
