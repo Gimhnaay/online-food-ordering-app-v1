@@ -41,6 +41,9 @@ import java.util.Optional;
             restaurant.setOpeningHours(req.getOpeningHours());
             restaurant.setRegistrationDate(LocalDateTime.now());
             restaurant.setOwner(user);
+            //not sure start///////////////////////////
+            restaurant.setImages(req.getImages());
+            //stop////////////////////////////////
 
             return restaurantRepository.save(restaurant);
         }

@@ -106,6 +106,16 @@ public class AppConfig {
                 .addFilterBefore(tokenValidator, UsernamePasswordAuthenticationFilter.class)
                 .build();
 
+//        return http.csrf(AbstractHttpConfigurer::disable)
+//                .authorizeHttpRequests(auth -> auth
+//                        .requestMatchers("/auth/**").permitAll()
+//                        .requestMatchers("/api/**").hasAnyRole("RESTAURANT_OWNER", "ADMIN")
+//                        .anyRequest().authenticated())
+//                .httpBasic(Customizer.withDefaults()) // for Postman testing
+//                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                .addFilterBefore(tokenValidator, UsernamePasswordAuthenticationFilter.class)
+//                .build();
+
 
     }
     @Bean
@@ -122,10 +132,11 @@ public class AppConfig {
         };
     }
 
-
     @Bean
     PasswordEncoder passwordEncoder(){
+
         return new BCryptPasswordEncoder();
     }
 
 }
+

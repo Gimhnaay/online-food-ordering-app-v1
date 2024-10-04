@@ -75,6 +75,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.util.List;
+
 @Component
 public class JwtTokenValidator extends OncePerRequestFilter {
     @Override

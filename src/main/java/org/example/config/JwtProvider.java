@@ -1,5 +1,5 @@
 package org.example.config;
-//
+
 //import io.jsonwebtoken.Claims;
 //import io.jsonwebtoken.Jwts;
 //import io.jsonwebtoken.security.Keys;
@@ -43,8 +43,7 @@ package org.example.config;
 //        return String.join(",",auths);
 //    }
 //}
-
-
+//
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -60,21 +59,6 @@ import java.util.*;
 public class JwtProvider {
     private SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes());
 
-    /*public String generateToken(String name) {
-        Map<String, Object> claims = new HashMap<>();
-        return Jwts.builder()
-                .claims()
-                .add(claims)
-                .subject(name)
-
-                .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 60 * 60 * 30))
-                .and()
-                .signWith(key)
-                .compact();
-
-
-    }*/
 
     public String generateToken(Authentication auth){
         Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
@@ -93,7 +77,6 @@ public class JwtProvider {
         String email = String.valueOf(claims.get("email"));
         return email;
     }
-
     private String populateAuthorities(Collection<? extends GrantedAuthority> authorities) {
         Set<String> auths = new HashSet<>();
         for (GrantedAuthority authority:authorities){
@@ -102,3 +85,4 @@ public class JwtProvider {
         return String.join(",",auths);
     }
 }
+
