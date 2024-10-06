@@ -124,7 +124,7 @@ public class AppConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/") // Apply CORS to all paths
-                        .allowedOrigins("http://localhost:3000") // Allow the React frontend's origin
+                        .allowedOrigins("http://localhost:3000") // Allow the React frontend origin
                         .allowedMethods("GET", "POST", "PUT", "DELETE") // Allow specific HTTP methods
                         .allowedHeaders("*") // Allow all headers
                         .allowCredentials(true); // Allow credentials (cookies, authorization headers)

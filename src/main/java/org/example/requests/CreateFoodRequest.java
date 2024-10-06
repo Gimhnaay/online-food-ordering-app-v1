@@ -14,6 +14,7 @@ public class CreateFoodRequest {
 
     private Category category;
     private List<String> images;
+
     private Long restaurantId;
     private boolean vegetarian;
     private boolean seasonal;
