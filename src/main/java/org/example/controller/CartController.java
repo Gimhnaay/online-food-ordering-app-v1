@@ -31,7 +31,7 @@ public class CartController {
         return new ResponseEntity<>(cartItem, HttpStatus.OK);
     }
 
-    @PutMapping("/cartItem/update")
+    @PutMapping("/cart-item/update")
     public ResponseEntity<CartItem> updateCartItemQuantity(
             @RequestBody UpdateCartItemRequest req,
             @RequestHeader("Authorization") String jwt) throws Exception {
@@ -39,7 +39,7 @@ public class CartController {
         return new ResponseEntity<>(cartItem, HttpStatus.OK);
     }
 
-    @DeleteMapping("/cartItem/{id}/remove")
+    @DeleteMapping("/cart-item/{id}/remove")
     public ResponseEntity<Cart> removeCartItem(
             @PathVariable Long id,
             @RequestHeader("Authorization") String jwt) throws Exception {
@@ -54,7 +54,7 @@ public class CartController {
         Cart cart= cartService.clearCart(user.getId());
         return new ResponseEntity<>(cart, HttpStatus.OK);
     }
-    @GetMapping("/cart/user")
+    @GetMapping("/cart")
     public ResponseEntity<Cart> findUserCart(
             @RequestHeader("Authorization") String jwt) throws Exception {
 

@@ -28,7 +28,7 @@ import java.util.List;
         @ManyToOne
         private Restaurant restaurant;
 
-        private Long total_Amount;
+        private Long totalAmount;
 
         private String orderStatus;
 
@@ -36,6 +36,7 @@ import java.util.List;
 
         @ManyToOne
         private Address deliveryAddress;
+
 
         @OneToMany
         private List<Orderitem> items;

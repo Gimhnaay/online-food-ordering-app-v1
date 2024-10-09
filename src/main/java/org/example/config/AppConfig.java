@@ -99,7 +99,7 @@ public class AppConfig {
         return http.csrf(customizer -> customizer.disable())
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("auth/**").permitAll()
-                        .requestMatchers("api/**").hasAnyRole("RESTAURANT_OWNER","ADMIN")
+                        .requestMatchers("api/**").hasAnyRole("RESTAURANT_OWNER","ADMIN","CUSTOMER")
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults()) //to postman
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

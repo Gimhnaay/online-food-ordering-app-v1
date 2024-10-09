@@ -19,8 +19,9 @@ import lombok.NoArgsConstructor;
 
         private String name;
 
-        @JsonIgnore
+
         @ManyToOne
+        @JsonIgnore
         private Restaurant restaurant;
 
 

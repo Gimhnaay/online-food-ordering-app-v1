@@ -105,6 +105,7 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.findByCustomerId(userId);
     }
 
+
     @Override
     public List<Order> getRestaurantsOrder(Long restaurantId, String orderStatus) throws Exception {
         List<Order> orders = orderRepository.findByRestaurantId(restaurantId);

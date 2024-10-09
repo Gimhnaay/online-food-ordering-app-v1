@@ -10,3 +10,7 @@ spring:
 
 server:
   port: 8080
+
+
+stripe:
+  secret-key: sk_test_51Q7weM1ypTo0TJw9p5KuYGDDJJ2z5bWdfArkctGYBN4LeeMYwmpKgmaqRSkhyLXdmcipOlWRHrPVRkxzUyn60Ahm00WuqkpKKB
