@@ -30,15 +30,15 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.save(category);
     }
 
-//    @Override
-//    public List<Category> findCategoryByRestaurantId(Long id) throws Exception {
-//        Restaurant restaurant=restaurantService.getRestaurantByUserId(id);
-//        return categoryRepository.findByRestaurantId(id);
-//    }
-@Override
-public List<Category> findCategoryByRestaurantId(Long id) throws Exception {
-    return categoryRepository.findByRestaurantId(id);
-}
+    @Override
+    public List<Category> findCategoryByRestaurantId(Long id) throws Exception {
+        Restaurant restaurant=restaurantService.findRestaurantByID(id);
+        return categoryRepository.findByRestaurantId(id);
+    }
+//@Override
+//public List<Category> findCategoryByRestaurantId(Long id) throws Exception {
+//    return categoryRepository.findByRestaurantId(id);
+//}
 
 
     @Override

@@ -15,27 +15,56 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Value("${stripe.secret-key}")
     private String stripeSecretKey;
+//    @Override
+//    public PaymentResponse createPaymentLink(Order order) throws StripeException {
+//
+//        Stripe.apiKey=stripeSecretKey;
+//        SessionCreateParams params=SessionCreateParams.builder().addPaymentMethodType(
+//                SessionCreateParams.
+//                        PaymentMethodType.CARD)
+//                .setMode(SessionCreateParams.Mode.PAYMENT)
+//                .setSuccessUrl("http://localhost:3000/payment/success/"+order.getId())
+//                .setCancelUrl("http://localhost:3000/payment/fail")
+//                .addLineItem(SessionCreateParams.LineItem.builder()
+//                        .setQuantity(1L).setPriceData(SessionCreateParams.LineItem.PriceData.builder()
+//                                .setCurrency("usd")
+//                                .setUnitAmount((long) order.getTotalPrice()*100)
+//                                                .setProductData(SessionCreateParams.LineItem.PriceData.ProductData.builder()
+//                                                        .setName("eazy eats")
+//                                                        .build())
+//                                                .build()
+//                                )
+//                                .build()
+//                        )
+//                .build();
+//
+//        Session session = Session.create(params);
+//
+//        PaymentResponse res = new PaymentResponse();
+//        res.setPayment_url(session.getUrl());
+//
+//        return res;
+//    }
+
     @Override
     public PaymentResponse createPaymentLink(Order order) throws StripeException {
 
-        Stripe.apiKey=stripeSecretKey;
-        SessionCreateParams params=SessionCreateParams.builder().addPaymentMethodType(
-                SessionCreateParams.
-                        PaymentMethodType.CARD)
+        Stripe.apiKey = stripeSecretKey;
+        SessionCreateParams params = SessionCreateParams.builder()
+                .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
                 .setMode(SessionCreateParams.Mode.PAYMENT)
-                .setSuccessUrl("http://localhost:3000/payment/success/"+order.getId())
+                .setSuccessUrl("http://localhost:3000/payment/success/" + order.getId())
                 .setCancelUrl("http://localhost:3000/payment/fail")
                 .addLineItem(SessionCreateParams.LineItem.builder()
-                        .setQuantity(1L).setPriceData(SessionCreateParams.LineItem.PriceData.builder()
+                        .setQuantity(1L)
+                        .setPriceData(SessionCreateParams.LineItem.PriceData.builder()
                                 .setCurrency("usd")
-                                .setUnitAmount((long) order.getTotalPrice()*100)
-                                                .setProductData(SessionCreateParams.LineItem.PriceData.ProductData.builder()
-                                                        .setName("eazy eats")
-                                                        .build())
-                                                .build()
-                                )
-                                .build()
-                        )
+                                .setUnitAmount((long) ((order.getTotalPrice() + 400) * 100)) // Adding 400 to total price
+                                .setProductData(SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                                        .setName("eazy eats")
+                                        .build())
+                                .build())
+                        .build())
                 .build();
 
         Session session = Session.create(params);
@@ -45,4 +74,5 @@ public class PaymentServiceImpl implements PaymentService {
 
         return res;
     }
+
 }
